@@ -1,5 +1,6 @@
 # Metacrafters-Solidity-EVM-Beginner
 
+## About
 This project showcases how to create a new token within Solidity.
 
 ## Getting Started
