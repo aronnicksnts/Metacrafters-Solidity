@@ -9,18 +9,13 @@ contract CHESS {
    string public tokenAbbrv = "CHS";
    uint public totalSupply = 0;
 
-   address public minter;
    mapping(address => uint) public balances;
 
 
    event Sent(address from, address to, uint amount);
 
-   constructor() {
-      minter = msg.sender;
-   }
-
    function mint(address receiver, uint amount) public {
-      require(msg.sender == minter);
+      require(msg.sender == receiver);
       balances[receiver] += amount;
       totalSupply += amount;
    }
@@ -41,8 +36,8 @@ contract CHESS {
    }
 
    function burn(uint amount) public {
-      require(balances[minter] >= amount);
-      balances[minter] -= amount;
+      assert(balances[msg.sender] >= amount);
+      balances[msg.sender] -= amount;
       totalSupply -= amount;
    }
 
